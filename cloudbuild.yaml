@@ -1,0 +1,17 @@
+serviceAccount: $SERVICE_ACCOUNT
+options:
+  logging: CLOUD_LOGGING_ONLY
+
+steps:
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  args:
+  - gcloud
+  - functions
+  - deploy
+  - check-data
+  - --region=europe-west1
+  - --source=.
+  - --trigger-http
+  - --runtime=python310
+  - --entry-point=main
+  - --set-env-vars=TABLE_ID=apple-news-db6d6.apple_news.apple_news_transformed,PROJECT_ID=apple-news-db6d6,TOPIC_ID=test

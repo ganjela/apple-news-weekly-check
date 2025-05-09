@@ -35,7 +35,7 @@ class NewsDataMonitor:
 
     @staticmethod
     def _find_missing_dates(start, found):
-        expected = {(start + timedelta(days=i)).strftime('%Y-%m-%d') for i in range(6)}
+        expected = {(start + timedelta(days=i)).strftime('%Y-%m-%d') for i in range(7)}
         missing = sorted(expected - found)
         return missing
 

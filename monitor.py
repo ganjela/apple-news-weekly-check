@@ -15,9 +15,9 @@ class NewsDataMonitor:
 
     @staticmethod
     def _get_date_range():
-        current_date = date.today()
-        start = current_date - timedelta(days=6)
-        return start, current_date
+        end = date.today() - timedelta(days=1)
+        start = end - timedelta(days=6)
+        return start, end
 
     def _get_published_dates(self, start, end):
         sql = self._create_query(start, end)
@@ -35,7 +35,7 @@ class NewsDataMonitor:
 
     @staticmethod
     def _find_missing_dates(start, found):
-        expected = {(start + timedelta(days=i)).strftime('%Y-%m-%d') for i in range(7)}
+        expected = {(start + timedelta(days=i)).strftime('%Y-%m-%d') for i in range(6)}
         missing = sorted(expected - found)
         return missing
 

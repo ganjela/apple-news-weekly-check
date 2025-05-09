@@ -15,7 +15,7 @@ class NewsDataMonitor:
 
     @staticmethod
     def _get_date_range():
-        end = date.today() - timedelta(days=1)
+        end = date.today()
         start = end - timedelta(days=7)
         return start, end
 
